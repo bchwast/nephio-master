@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata: # kpt-merge: nginx/nginx-srv
   name: nginx-srv
-  namespace: nginx
+  namespace: nginx-new
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|nginx|nginx-srv'
 spec:

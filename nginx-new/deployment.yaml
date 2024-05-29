@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: # kpt-merge: nginx/nginx-dep
   name: nginx-dep
-  namespace: nginx
+  namespace: nginx-new
   labels:
     app: nginx
   annotations:
