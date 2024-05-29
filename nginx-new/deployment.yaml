@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # kpt-merge: nginx/nginx-dep
+  name: nginx-dep
+  namespace: nginx
+  labels:
+    app: nginx
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|nginx|nginx-dep'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-index
+          mountPath: /usr/share/nginx/html/
+      volumes:
+      - name: nginx-index
+        configMap:
+          name: nginx-cfg

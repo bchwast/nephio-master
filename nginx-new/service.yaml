@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: # kpt-merge: nginx/nginx-srv
+  name: nginx-srv
+  namespace: nginx
+  annotations:
+    internal.kpt.dev/upstream-identifier: '|Service|nginx|nginx-srv'
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
