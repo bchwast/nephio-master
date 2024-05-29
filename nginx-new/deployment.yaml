@@ -6,9 +6,8 @@ metadata: # kpt-merge: nginx/nginx-dep
   labels:
     app: nginx
   annotations:
-    internal.kpt.dev/upstream-identifier: 'apps|Deployment|nginx|nginx-dep'
+    internal.kpt.dev/upstream-identifier: apps|Deployment|nginx|nginx-dep
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -29,3 +28,4 @@ spec:
       - name: nginx-index
         configMap:
           name: nginx-cfg
+  replicas: 10
